@@ -7,6 +7,6 @@ public class Myserveur{
     public static void main(String[] args) throws Exception{
         ServerSocket serverSocket=new ServerSocket(3000);
         Socket client=serverSocket.accept();
-        Rescreen r=new Rescreen(client);
+        Repaint r=new Repaint(client);
     }
 }

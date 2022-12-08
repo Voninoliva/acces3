@@ -12,6 +12,8 @@ public class ClientScreen extends Thread{
     Robot robot;
     boolean infini;
     Dimension dimension;
+    double widths;
+    double heights;
     public ClientScreen(Socket cl)throws Exception {
         this.client = cl;
         GraphicsEnvironment gEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -19,6 +21,8 @@ public class ClientScreen extends Thread{
         this.robot=new Robot(gDev);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.dimension=dim;
+        this.widths=dim.getWidth();
+        this.heights=dim.getHeight();
         this.infini=true;
         start();
     }
@@ -27,8 +31,10 @@ public class ClientScreen extends Thread{
         super.run();
         try {
             DataOutputStream datao=new DataOutputStream(this.client.getOutputStream());
+            datao.writeDouble(this.widths);
+            datao.writeDouble(this.heights);
             while(infini==true){
-                BufferedImage image=robot.createScreenCapture(new Rectangle(this.dimension));
+                BufferedImage image=this.robot.createScreenCapture(new Rectangle(this.dimension));
                 try {
                     ByteArrayOutputStream outs=new ByteArrayOutputStream();
                     ImageIO.write(image, "png",outs);
@@ -36,10 +42,14 @@ public class ClientScreen extends Thread{
                     datao.write(len);
                     datao.write(outs.toByteArray());
                     datao.flush();
+                    //asina new receiveevent
+                    EventR enr=new EventR(this.client,this.robot); 
                 } catch (Exception e) {
                     e.printStackTrace();
-                }
+                }  
+                  
             }
+             
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,6 +1,5 @@
 package serveur;
-import java.awt.Graphics;
-import java.awt.Image;
+import java.awt.*;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -16,6 +15,7 @@ public class GetClientS extends Thread{
     Socket client;
     boolean infini;
     JPanel panel;
+   
     public GetClientS(Socket client,JPanel p) {
         this.client = client;
         this.infini=true;
@@ -44,7 +44,7 @@ public class GetClientS extends Thread{
                 nowInRead+=addenazy;
             }
             Image image=ImageIO.read(new ByteArrayInputStream(finalbyte));
-            Graphics g=this.panel.getGraphics();
+            Graphics2D g=(Graphics2D)this.panel.getGraphics();
             g.drawImage(image,0,0,this.panel.getWidth(),this.panel.getHeight(),this.panel);
            } catch (Exception e) {
                 e.printStackTrace();
