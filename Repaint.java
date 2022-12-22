@@ -14,8 +14,6 @@ public class Repaint extends Thread{
     }
     public void createInterface(){
         JFrame theframe=new JFrame("the client screen");
-        //theframe.setSize(new Dimension(500,400));
-        //theframe.setDimension(JFrame.MAXIMIZED_BOTH);
         this.panel=new JPanel();
         theframe.add(this.panel);
         theframe.setVisible(true);

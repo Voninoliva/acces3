@@ -29,7 +29,6 @@ public class EventL implements KeyListener, MouseMotionListener, MouseListener {
     public void keyPressed(KeyEvent e) {
         this.panel.requestFocus();
         this.panel.setFocusable(true);
-        System.out.print("keyPressed:"+e.getKeyCode());
         writer.println("1");
         writer.println(e.getKeyCode());
         writer.flush();
@@ -39,7 +38,6 @@ public class EventL implements KeyListener, MouseMotionListener, MouseListener {
     public void keyReleased(KeyEvent e) {
         this.panel.requestFocus();
         this.panel.setFocusable(true);
-        System.out.print("keyReleased:"+e.getKeyCode());
         writer.println("2");
         writer.println(e.getKeyCode());
         writer.flush();
@@ -93,7 +91,6 @@ public class EventL implements KeyListener, MouseMotionListener, MouseListener {
     public void mousePressed(MouseEvent e) {
         this.panel.requestFocus();
         this.panel.setFocusable(true);
-        System.out.print("mousePressed,"+e.getButton()+"    ");
         writer.println("4");
         if(e.getButton()==3){
             writer.println(4);
@@ -108,7 +105,6 @@ public class EventL implements KeyListener, MouseMotionListener, MouseListener {
     public void mouseReleased(MouseEvent e) {
         this.panel.requestFocus();
         this.panel.setFocusable(true);
-        System.out.print("mouseReleased,"+e.getButton()+"    ");
         writer.println("5");
         if(e.getButton()==3){
             writer.println(4);

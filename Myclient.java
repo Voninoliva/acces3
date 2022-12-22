@@ -13,7 +13,7 @@ public class Myclient {
             ip=JOptionPane.showInputDialog("entrez l'ip");
             System.out.println(ip);
                 Socket client=new Socket(ip, 3000);
-                ClientScreen cl=new ClientScreen(client);//192.168.92.191 
+                ClientScreen cl=new ClientScreen(client);
         } catch (Exception e) {
             e.printStackTrace();
         }

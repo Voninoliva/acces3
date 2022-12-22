@@ -42,14 +42,12 @@ public class ClientScreen extends Thread{
                     datao.write(len);
                     datao.write(outs.toByteArray());
                     datao.flush();
-                    //asina new receiveevent
                     EventR enr=new EventR(this.client,this.robot); 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }  
                   
             }
-             
         } catch (Exception e) {
             e.printStackTrace();
         }
